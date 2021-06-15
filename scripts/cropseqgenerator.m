@@ -10,30 +10,36 @@ clear
 %% User Set up
 % Information on how many fields, years and crops to simulate, which region to simulate, and whether to include permanent grassland.
 
-addCropRules = false;
+useFullDataset = true;
+addCropRules = true; %if full dataset then this should be true?
+numfields=1000; %100000; % how many fields to simulate
+numyears=200; %1; % how many years to predict crops for
+nuts = ["C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"];
+soils = ["H" "M" "L"];
 
 if addCropRules
     cropRuleStr = "_addedCropRules";
-    ssFile = "steadystates-permagrass-sample+grassRule_UK"
-    tmFile = "probabilities-permagrass-sample+grassRule_UK"    
+    ruleInSfx = "+grassRule";
     cropNames = {   'be'    'fb'    'gr1'   'gr2'   'ma'    'or'    'ot'	'po'	'sb'	'sw'	'wb'	'ww'}'; % how many different crops are there
     cropmat = [     1,      2,      3,      4,      5,      6,      7,      8,      9,      10,     11      12]; %Each crop is assigned a number    
 else
     cropRuleStr = "_noCropRules";
-    ssFile = "steadystates-permagrass-sample_UK"
-    tmFile = "probabilities-permagrass-sample_UK"    
+    ruleInSfx = "";
     cropNames = {   'be'    'fb'    'gr'   'ma'    'or'    'ot'	'po'	'sb'	'sw'	'wb'	'ww'}'; % how many different crops are there
     cropmat = [     1,      2,      3,      4,      5,      6,      7,      8,      9,      10,     11]; %Each crop is assigned a number        
 end
 
-numfields=1000; %100000; % how many fields to simulate
-numyears=200; %1; % how many years to predict crops for
+if useFullDataset
+    dataSfx = "-full";
+else
+    dataSfx = "-sample";
+end
+
+ssFile = "steadystates-permagrass" + dataSfx + ruleInSfx + "_UK";
+tmFile = "probabilities-permagrass" + dataSfx + ruleInSfx + "_UK";
 
 numcrops=size(cropNames,1);
 cropNames = table(cropNames);
-
-nuts = ["C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"];
-soils = ["H" "M" "L"];
 
 for nut = nuts %nut="D"
     for soil = soils %soil="H"

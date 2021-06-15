@@ -1,0 +1,4 @@
+crop gr1 gr2 sb
+gr1 0 1 0
+gr2 0 1 0
+sb 1 0 0
