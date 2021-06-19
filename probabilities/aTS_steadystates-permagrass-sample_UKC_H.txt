@@ -1,0 +1,6 @@
+crop prop
+fb 0
+gr 1
+ot 0
+sb 0
+ww 0

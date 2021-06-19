@@ -1,2 +1,0 @@
-crop prop
-gr 1

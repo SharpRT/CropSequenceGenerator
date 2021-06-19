@@ -48,10 +48,9 @@ cropNames = table(cropNames);
 for nut = nuts %nut="C"
     for soil = soils %soil="H"
         
-        countCropRuleWarning = 0;
+        countCropRuleWarning = 0
         
-        nuts_soil = strcat(nut,"_",soil);
-        disp("nuts_soil = " + nuts_soil)
+        nuts_soil = strcat(nut,"_",soil)
         
 %         if nuts_soil=="E_M"
 %             disp("Debug here")
@@ -218,6 +217,7 @@ for nut = nuts %nut="C"
             %use the transition matrix to chose the next crop according to the probabilites
             for year=1:numyears-1 %Go through each year
                 for field=1:numfields %Go through each field
+                    %disp(['year=',num2str(year),'; field=',num2str(field)])
                     %P is the row of the probability matrix for the current crop with probabilites adjusted according to any pertinent crop rules
                     P = getP(...
                         probmat,numcrops,mycrops,field,year,addCropRules...
@@ -295,7 +295,7 @@ for nut = nuts %nut="C"
             
         end
         if countCropRuleWarning > 0
-            disp("countCropRuleWarning = " + num2str(countCropRuleWarning))
+            disp(["countCropRuleWarning = ", num2str(countCropRuleWarning)])
         end
     end
 end

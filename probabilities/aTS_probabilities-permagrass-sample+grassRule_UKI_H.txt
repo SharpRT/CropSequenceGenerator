@@ -1,0 +1,5 @@
+crop gr1 gr2 or ot
+gr1 0 1 0 0
+gr2 0 0.75 0 0.25
+or 1 0 0 0
+ot 1 0 0 0
